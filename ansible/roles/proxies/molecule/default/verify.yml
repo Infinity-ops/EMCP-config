@@ -1,0 +1,10 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks: 
+  - name: Print variables from proxies.sh
+    command: cat /etc/profile.d/proxy.sh
+    register: "output"
+  - debug: var=output.stdout_lines
+  
