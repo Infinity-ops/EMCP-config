@@ -1,0 +1,10 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks: 
+  - name: Print poetry Version
+    command: /opt/pypoetry/bin/poetry --version
+    register: "output"
+  - debug: var=output.stdout_lines
+  
