@@ -45,6 +45,23 @@
     force: true
   when: poetry_verification_result is success
 
-- name: Add Bash completions
-  ansible.builtin.shell: "{{ poetry_home | quote }}/bin/poetry completions bash > /etc/bash_completion.d/poetry.bash-completion"
+- name: Create a directory if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: /etc/bash_completion.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Run Bash completions command
+  ansible.builtin.command: "{{ poetry_home | quote }}/bin/poetry completions bash"
+  register: "output"
+  changed_when: false
   when: poetry_verification_result is success
+
+- name: Save the Bash completions output to a file
+  ansible.builtin.copy: 
+    content: "{{ output }}"
+    dest: "/etc/bash_completion.d/poetry.bash-completion"
+    
