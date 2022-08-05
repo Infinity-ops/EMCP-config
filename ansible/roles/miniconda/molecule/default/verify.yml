@@ -1,0 +1,10 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks: 
+  - name: Print miniconda Version
+    command: /opt/miniconda/bin/conda --version
+    register: "miniconda_Version"
+  - debug: var=miniconda_Version.stdout_lines
+
