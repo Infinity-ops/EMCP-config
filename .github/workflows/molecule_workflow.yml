@@ -1,0 +1,35 @@
+name: Role test workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  build:
+    name: Test Roles using MOLECULE
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+          
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          
+      - name: Install test dependencies
+        run: pip3 install ansible docker molecule[docker]
+        
+      - name: Run ansible requirements
+        run: ansible-galaxy collection install community.docker
+        
+      - name: Test roles that initialized with molecule
+        run: find -type d -name molecule -execdir molecule test \;
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          
