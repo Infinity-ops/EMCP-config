@@ -24,6 +24,7 @@ jobs:
         run: |
           cd /home
           pwd
+          ls -la/home//home/
           cd /usr/share/ansible && ls -la && cd ..
         
 
