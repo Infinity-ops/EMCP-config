@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - TestBranch_AnsibleLint 
   pull_request:
     branches:
       - "*"
