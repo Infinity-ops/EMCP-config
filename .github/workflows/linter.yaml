@@ -21,7 +21,9 @@ jobs:
           fetch-depth: 0
           
       - name: Run ansible requirements
-        run: ansible-galaxy collection install community.general
+        run: |
+          cd /github/home/ && ls && cd ..
+        
 
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
