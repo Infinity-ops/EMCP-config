@@ -22,10 +22,11 @@ jobs:
           
       - name: Run ansible requirements
         run: |
-          cd /home/runner
+          cd /home/runner/work
           pwd
           ls -la
-          cd /usr/share/ansible && ls -la && cd ..
+          cd /
+          grep -r ansible *
         
 
       - name: Lint ansible project
