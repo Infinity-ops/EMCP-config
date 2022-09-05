@@ -22,7 +22,8 @@ jobs:
           
       - name: Run ansible requirements
         run: |
-          cd /github/home/ && ls && cd ..
+          pwd
+          cd /usr/share/ansible && ls -la && cd ..
         
 
       - name: Lint ansible project
