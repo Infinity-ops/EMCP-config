@@ -22,6 +22,7 @@ jobs:
           
       - name: Run ansible requirements
         run: |
+          cd /home
           pwd
           cd /usr/share/ansible && ls -la && cd ..
         
