@@ -21,8 +21,7 @@ jobs:
           fetch-depth: 0
           
       - name: Run ansible requirements
-        run: |
-            ansible-galaxy collection list
+        run: ansible-galaxy collection install community.docker
 
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
