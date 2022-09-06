@@ -19,17 +19,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          
-      - name: Run ansible requirements
-        run: |
-          pwd
-          ls -la
-          cd /home/runner/work
-          pwd
-          ls -la
-          cd /
-          grep -r ansible *
-        
 
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
