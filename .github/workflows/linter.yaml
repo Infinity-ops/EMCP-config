@@ -22,6 +22,8 @@ jobs:
           
       - name: Run ansible requirements
         run: |
+          pwd
+          ls -la
           cd /home/runner/work
           pwd
           ls -la
