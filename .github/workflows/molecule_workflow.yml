@@ -26,6 +26,13 @@ jobs:
         
       - name: Run ansible requirements
         run: ansible-galaxy collection install community.docker
+      
+      - name: dhfsgfk
+        run: |
+          pwd
+          ls -la
+          cd ansible
+          ls -la
         
       - name: Test roles that initialized with molecule
         run: find -type d -name molecule -execdir molecule test \;
