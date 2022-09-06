@@ -24,10 +24,12 @@ jobs:
         run: |
           pwd
           cd /
-          pwd
           ls -la
-          cd ansible/
-          ls
+          cd etc/
+          ls -la
+          cd ansible
+          ls -la
+
           
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
