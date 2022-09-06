@@ -20,13 +20,12 @@ jobs:
         with:
           fetch-depth: 0
         
-        
       - name: dhfsgfk
         run: |
           pwd
           cd /home/runner/
           ls -la
-          cd /home/runner/.ansible/collections
+          cd /home/runner/work
           ls
 
           
