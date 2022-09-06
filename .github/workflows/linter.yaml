@@ -23,9 +23,11 @@ jobs:
       - name: dhfsgfk
         run: |
           pwd
+          cd /
+          pwd
           ls -la
-          cd ansible
-          ls -la
+          cd ansible/
+          ls
           
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
