@@ -19,6 +19,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          
+      - name: dhfsgfk
+        run: |
+          ls -la
+          cd /ansible
+          ls -la
+      
 
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
