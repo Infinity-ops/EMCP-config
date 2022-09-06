@@ -20,6 +20,9 @@ jobs:
         with:
           fetch-depth: 0
           
+      - name: Run ansible requirements
+        run: ansible-galaxy collection install community.general
+        
       - name: dhfsgfk
         run: |
           pwd
