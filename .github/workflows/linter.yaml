@@ -36,4 +36,4 @@ jobs:
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
         with:
-          path: /home/runner/
+          path: /home/runner/work/EMCP-config/EMCP-config
