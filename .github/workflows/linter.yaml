@@ -20,6 +20,6 @@ jobs:
           fetch-depth: 0
           
       - name: Lint ansible project
-        uses: ansible-community/ansible-lint-action@v6
+        uses: ansible-community/ansible-lint-action@v6.2.1
         with:
           path: "ansible/roles/"
