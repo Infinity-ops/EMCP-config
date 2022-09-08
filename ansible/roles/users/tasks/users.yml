@@ -13,4 +13,4 @@
     state: present
   loop: "{{ ipausers }}"
   loop_control:
-    loop_var: users_item
+    loop_var: useritem   #users_item
