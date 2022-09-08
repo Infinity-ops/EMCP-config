@@ -22,4 +22,4 @@ jobs:
       - name: Lint ansible project
         uses: ansible-community/ansible-lint-action@v6
         with:
-          path: "roles/"
+          path: "ansible/roles/"
