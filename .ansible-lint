@@ -52,7 +52,7 @@ enable_list:
 # This makes the linter display but not fail for rules/tags listed below:
 warn_list:
   - skip_this_tag
-  - latest[git]
+  - git-latest
   - experimental  # experimental is included in the implicit list
   # - role-name
 
