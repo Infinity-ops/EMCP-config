@@ -9,7 +9,7 @@
 - name: Add system-wide SSH config to access github.com and gitlab.com.
   ansible.builtin.template:
     src: "{{ ssh_config_item }}.j2"
-    dest: "/etc/ssh/ssh_config.d/{{ ssh_config_item }}"
+    dest: "/etc/ssh/ssh_config.d/00-{{ ssh_config_item }}"
     owner: root
     group: root
     mode: 0644
