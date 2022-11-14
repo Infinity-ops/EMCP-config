@@ -14,10 +14,10 @@
     owner: root
     group: root
     mode: 0755
-  with_items:
+  loop:
     - download_dataset.sh
     - gpuNet_docker.sh
- 
+
 - name: Debug Message
   ansible.builtin.debug:
     msg: "To execute Nvidia/DLFramework test remove ansible special tag never from the corresponding tasks"
