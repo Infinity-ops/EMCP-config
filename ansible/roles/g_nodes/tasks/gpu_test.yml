@@ -7,7 +7,7 @@
     group: root
     mode: 0755
 
--- name: Add the scripts for collecting GPU facts
+- name: Add the scripts for collecting GPU facts
   ansible.builtin.copy:
     src: "{{ loop_src_list }}"
     dest: /usr/local/pytorch_GPUNET
