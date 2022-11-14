@@ -1,0 +1,29 @@
+---
+- name: Create the working directory
+  ansible.builtin.file:
+    path: /usr/local/pytorch_GPUNET
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Add the scripts for collecting GPU facts
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /usr/local/pytorch_GPUNET
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - download_dataset.sh
+    - gpuNet_docker.sh
+ 
+- name: Debug Message
+  ansible.builtin.debug:
+    msg: "To execute Nvidia/DLFramework test remove ansible special tag never from the corresponding tasks"
+
+- name: Perform a pytorch framework docker script to test on host
+  ansible.builtin.script:
+    cmd: /usr/local/pytorch_GPUNET/gpuNet_docker.sh
+  tags:
+    - never

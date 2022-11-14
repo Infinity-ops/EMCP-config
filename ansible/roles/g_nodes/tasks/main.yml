@@ -10,3 +10,9 @@
   block:
     - ansible.builtin.include_tasks: gpufacts.yml
   tags: gpufacts
+
+- name: Performing Nvidia-DeepLearning frameworks test on the host
+  become: true
+  block:
+    - ansible.builtin.include_tasks: gpu_test.yml
+  tags: gpu_test
