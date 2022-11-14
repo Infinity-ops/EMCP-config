@@ -9,7 +9,7 @@
 
 - name: Add the scripts for collecting GPU facts
   ansible.builtin.copy:
-    src: "{{ loop_src_list }}"
+    src: "{{ g_nodes_src_list }}"
     dest: /usr/local/pytorch_GPUNET
     owner: root
     group: root
@@ -18,7 +18,7 @@
     - download_dataset.sh
     - gpuNet_docker.sh
   loop_control:
-      loop_var: loop_src_list
+    loop_var: g_nodes_src_list
 
 - name: Debug Message
   ansible.builtin.debug:
