@@ -9,7 +9,7 @@
 
 - name: Add the scripts for corresponding DL Framework test
   ansible.builtin.copy:
-    src:  gpuNet_docker.sh
+    src: gpuNet_docker.sh
     dest: "{{ gputest_workdir_path }}/pytorch_GPUNET"
     owner: "{{ gputest_workdir_owner }}"
     group: "{{ gputest_workdir_owner }}"
