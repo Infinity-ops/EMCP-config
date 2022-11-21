@@ -19,13 +19,3 @@
     - gpuNet_docker.sh
   loop_control:
     loop_var: g_nodes_src_list
-
-- name: Debug Message
-  ansible.builtin.debug:
-    msg: "To execute Nvidia/DLFramework test remove ansible special tag never from the corresponding tasks"
-
-- name: Perform a pytorch framework docker script to test on host
-  ansible.builtin.script:
-    cmd: /usr/local/pytorch_GPUNET/gpuNet_docker.sh
-  tags:
-    - never
