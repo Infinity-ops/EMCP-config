@@ -1,18 +1,18 @@
 ---
 - name: Create the working directory
   ansible.builtin.file:
-    path: /usr/local/pytorch_GPUNET
+    path: "{{ work_dir }}/pytorch_GPUNET"
     state: directory
-    owner: root
-    group: root
+    owner: "{{ default_usr }}"
+    group: "{{ default_usr }}"
     mode: 0755
 
 - name: Add the scripts for collecting GPU facts
   ansible.builtin.copy:
     src: "{{ g_nodes_src_list }}"
-    dest: /usr/local/pytorch_GPUNET
-    owner: root
-    group: root
+    dest: "{{ work_dir }}/pytorch_GPUNET"
+    owner: "{{ default_usr }}"
+    group: "{{ default_usr }}"
     mode: 0755
   loop:
     - download_dataset.sh
