@@ -13,6 +13,7 @@
 
 - name: Performing Nvidia-DeepLearning frameworks test on the host
   become: true
+  become_user: "{{ default_usr }}"
   block:
     - ansible.builtin.include_tasks: gpu_test.yml
   tags: gpu_test
