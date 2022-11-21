@@ -1,5 +1,5 @@
 ---
-- name: Create the working directory
+- name: Create the working directory to test Pytorch Framework
   ansible.builtin.file:
     path: "{{ work_dir }}/pytorch_GPUNET"
     state: directory
@@ -7,7 +7,7 @@
     group: "{{ default_usr }}"
     mode: 0755
 
-- name: Add the scripts for collecting GPU facts
+- name: Add the scripts for collecting GPU facts for corresponding Pytorch Framework test
   ansible.builtin.copy:
     src: "{{ g_nodes_src_list }}"
     dest: "{{ work_dir }}/pytorch_GPUNET"
@@ -15,7 +15,28 @@
     group: "{{ default_usr }}"
     mode: 0755
   loop:
-    - download_dataset.sh
+    - download_ImageNet_dataset.sh
     - gpuNet_docker.sh
+  loop_control:
+    loop_var: g_nodes_src_list
+
+- name: Create the working directory to test TensorFlow Framework
+  ansible.builtin.file:
+    path: "{{ work_dir }}/tensorflow_SSD"
+    state: directory
+    owner: "{{ default_usr }}"
+    group: "{{ default_usr }}"
+    mode: 0755
+
+- name: Add the scripts for collecting GPU facts for corresponding TensorFlow Framework test
+  ansible.builtin.copy:
+    src: "{{ g_nodes_src_list }}"
+    dest: "{{ work_dir }}/tensorflow_SSD"
+    owner: "{{ default_usr }}"
+    group: "{{ default_usr }}"
+    mode: 0755
+  loop:
+    - download_coco2017tf_dataset.sh
+    - SSD_docker.sh
   loop_control:
     loop_var: g_nodes_src_list

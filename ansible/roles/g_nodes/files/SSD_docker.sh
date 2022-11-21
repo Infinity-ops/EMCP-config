@@ -2,15 +2,18 @@
 # git clone
 git clone https://github.com/NVIDIA/DeepLearningExamples.git
 
+# copy download coco dataset script 
+chmod +x download_coco2017tf_dataset.sh
+cp download_coco2017tf_dataset.sh ./DeepLearningExamples/TensorFlow/Detection/SSD/
+
 # set working directory
 cd DeepLearningExamples/TensorFlow/Detection/SSD/
 
-# create directory for logs and outputs
-mkdir -p data && mkdir -p checkpoint
+# build docker
+docker build . -t nvidia_ssd
 
 # run the script
-./download_dataset.sh
+./download_coco2017tf_dataset.sh nvidia_ssd ./data/coco2017_tfrecords ./checkpoints
 
-# build docker
-docker build -t gpunet .
-docker run --gpus all --rm --network=host --shm-size 600G --ipc=host -v /usr/local/pytorch_GPUNET/DeepLearningExamples/PyTorch/Classification/GPUNet/data:/root/data/imagenet/ gpunet ./train.sh $(nvidia-smi --list-gpus | wc -l) /root/data/imagenet/ --model gpunet_0 --sched step --decay-epochs 2.4 --decay-rate .97 --opt rmsproptf -b 192 --epochs 5 --opt-eps .001 -j 8 --warmup-lr 1e-6 --weight-decay 1e-5 --drop 0.3 --drop-connect 0.2 --model-ema --model-ema-decay 0.9999 --aa rand-m9-mstd0.5 --remode pixel --reprob 0.2 --lr .06 --num-classes 1000 --enable-distill False --crop-pct 1.0 --img-size 320 --amp
+# run docker
+nvidia-docker run --gpus all --rm --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -v ${PWD}/data/coco2017_tfrecords:/data/coco2017_tfrecords -v ${PWD}/checkpoints:/checkpoints --ipc=host nvidia_ssd bash ./examples/SSD320_FP16_8GPU.sh /checkpoints

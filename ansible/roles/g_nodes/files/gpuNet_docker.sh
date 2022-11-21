@@ -2,9 +2,9 @@
 # git clone
 git clone https://github.com/NVIDIA/DeepLearningExamples.git
 
-# copy download_dataset script 
-chmod +x download_dataset.sh
-cp download_dataset.sh ./DeepLearningExamples/PyTorch/Classification/GPUNet/
+# copy download ImageNet dataset script 
+chmod +x download_ImageNet_dataset.sh
+cp download_ImageNet_dataset.sh ./DeepLearningExamples/PyTorch/Classification/GPUNet/
 
 # set working directory
 cd DeepLearningExamples/PyTorch/Classification/GPUNet/
@@ -13,7 +13,7 @@ cd DeepLearningExamples/PyTorch/Classification/GPUNet/
 mkdir -p logs && mkdir -p output
 
 # run the script
-./download_dataset.sh
+./download_ImageNet_dataset.sh
 
 # build docker
 docker build -t gpunet .
