@@ -1,2 +1,2 @@
-default_usr: root
-work_dir: /usr/local
+gputest_workdir_owner: root
+gputest_workdir_path: /usr/local
