@@ -10,8 +10,7 @@ cd DeepLearningExamples/TensorFlow/Detection/SSD/
 docker build . -t nvidia_ssd
 
 # Get COCO 2017 data sets
-if [ -z $1 ]; then echo "Docker container name is missing" && exit 1; fi
-CONTAINER=nvidia_ssd
+CONTAINER="nvidia_ssd"
 COCO_DIR="./data/coco2017_tfrecords"
 CHECKPOINT_DIR="./checkpoints"
 mkdir -p $COCO_DIR
